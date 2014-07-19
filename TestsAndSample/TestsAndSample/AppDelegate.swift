@@ -20,45 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window!.backgroundColor = UIColor.whiteColor()
     self.window!.makeKeyAndVisible()
     
-    var point:CGPoint = CGPoint(x: 2.0, y: 2.0)
-    var vector:CGVector = CGVector(horizontal: 2.0, vertical: 2.0)
-    
-    point = point + vector
-    point += vector
-    
-    point = point - vector
-    point -= vector
-    
-    point = point * vector
-    point *= vector
-    
-    point = point / vector
-    point /= vector
-    
-    vector = vector * 4.5
-    vector *= 20.5
-    
-    vector = vector / 2.0
-    vector /= 2.0
-    point == vector
-    point != vector
-    point < vector
-    point <= vector
-    point > vector
-    point >= vector
-    
-    vector.angleInRadians
-    vector.magnitude
-    vector.length
-    vector.lengthSquared
-    vector.dotProduct(point)
-    vector.crossProduct(point)
-    vector.distanceTo(point)
-    vector.reversed
-    vector.normalized
-    vector.limited(20)
-    vector.scaled(20)
-    vector.angled(90)
+
 
 
     

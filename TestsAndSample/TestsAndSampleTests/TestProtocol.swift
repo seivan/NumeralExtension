@@ -7,42 +7,18 @@
 //
 
 import XCTest
-import CoreGraphics
 
-protocol TestOperators {
-  func testEqual()
-//  func testNotEqual()
-  func testLessThanOrEqual()
-  func testLessThan()
-  func testMoreThanOrEqual()
-  func testMoreThan()
-  func testSubtraction()
-  func testSubtractionAssignment()
-  func testAddition()
-  func testAdditionAssignment()
-  func testMultiplication()
-  func testMultiplicationAssignment()
-  func testDivision()
-  func testDivisionAssignment()
-  func testMultiplicationScalar()
-  func testMultiplicationScalarAssignment()
-  func testDivisionScalar()
-  func testDivisionScalarAssignment()
 
-}
-
-protocol TestMathFunctions {
-  func testAngleInRadians()
-  func testMagnitude()
-  func testLength()
-  func testLengthSquared()
-  func testDotProduct()
-  func testCrossProduct()
-  func testDistanceTo()
-  func testReversed()
-  func testNormalized()
-  func testLimited()
-  func testScaled()
-  func testAngled()
+protocol TestSHNumericExtension {
+  func testRadiansToDegrees()
+  func testDegreesToRadians()
+  func testsRandomFromZero()
+  func testIsEven()
+  func testRandom()
+  func testClamp()
+  func testTimes()
+  func testTimesWithIndex()
+  func testUpTo()
+  func testDownTo()
 }
 
