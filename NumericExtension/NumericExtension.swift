@@ -9,7 +9,6 @@ protocol NumericExtension {
   var sh_isEven:Bool { get }
   class func sh_random(#min:Int, max:Int) -> Self
   func sh_clamp(#min:Self, max:Self) -> Self
-//  func sh_times(block:()->())
   func sh_times(block:IndexHandler)
   func sh_upto(toValue:Self, _ block:IndexHandler)
   func sh_downto(toValue:Self, _ block:IndexHandler)
@@ -32,6 +31,8 @@ extension Swift.Double: NumericExtension {
     assert(min < max, "Minimum has to less than the maximum")
     return Double(min + Int(arc4random()) % (max - min + 1));
   }
+  
+  
   
   func sh_clamp(#min:Double,max:Double) -> Double {
     assert(min < max, "Minimum  has to be less than the maximum")
@@ -111,7 +112,4 @@ extension Swift.Int: NumericExtension {
     }
   }
   
-  
-  
 }
-
