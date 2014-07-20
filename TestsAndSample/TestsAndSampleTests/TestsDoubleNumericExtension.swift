@@ -10,7 +10,7 @@ import XCTest
 import CoreGraphics
 
 
-class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
+class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
 
   
   func testsRandomFromZero() {
@@ -83,7 +83,7 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
     let expected = 5
     XCTAssertEqual(candidate.count, 0)
     
-    expected.sh_times { n in
+    let range = expected.sh_times { n in
       candidate.append(n)
     }
     
@@ -91,11 +91,15 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
     XCTAssertEqual(candidate[0], 1)
     XCTAssertEqual(candidate[4], 5)
     
+    XCTAssertEqual(range.startIndex, 1)
+    XCTAssertEqual(range.endIndex, 5)
+
+    
   }
 
   func testUpTo() {
     var candidate = [Int]()
-    (-5).sh_upto(5) { n in
+    let range = Double(-5).sh_upto(5) { n in
       candidate.append(n)
     }
     
@@ -103,18 +107,26 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
     XCTAssertEqual(candidate[0], -5)
     XCTAssertEqual(candidate[10], 5)
     
+    XCTAssertEqual(range.startIndex, -5)
+    XCTAssertEqual(range.endIndex, 5)
+
+    
     
   }
   
   func testDownTo() {
     var candidate = [Int]()
-    Double(5).sh_downto(-5) { n in
+    let range = Double(5).sh_downto(-5) { n in
       candidate.append(n)
     }
     
     XCTAssertEqual(candidate.count, 11)
     XCTAssertEqual(candidate[0], 5)
     XCTAssertEqual(candidate[10], -5)
+
+    XCTAssertEqual(range.startIndex, 5)
+    XCTAssertEqual(range.endIndex, -5)
+
     
   }
 

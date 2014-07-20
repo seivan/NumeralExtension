@@ -2,7 +2,7 @@ import Foundation
 
 typealias IndexHandler = (number:Int) -> Void
 
-protocol NumericExtension {
+protocol NumeralExtension {
   var sh_randomFromZero:Self { get }
   var sh_isEven:Bool { get }
   class func sh_random(#min:Int, max:Int) -> Self
@@ -13,7 +13,7 @@ protocol NumericExtension {
 }
 
 
-extension Swift.Double: NumericExtension {
+extension Swift.Double: NumeralExtension {
   
   var sh_isEven:Bool {  return (self % 2 == 0) }
   var sh_randomFromZero:Double {
@@ -66,7 +66,7 @@ extension Swift.Double: NumericExtension {
   
 }
 
-extension Swift.Int: NumericExtension {
+extension Swift.Int: NumeralExtension {
   
   var sh_isEven:Bool {  return (self % 2 == 0) }
   var sh_randomFromZero:Int {

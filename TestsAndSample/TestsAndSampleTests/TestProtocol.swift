@@ -9,7 +9,7 @@
 import XCTest
 
 
-protocol TestSHNumericExtension {
+protocol TestNumeralExtension {
   func testsRandomFromZero()
   func testIsEven()
   func testRandom()

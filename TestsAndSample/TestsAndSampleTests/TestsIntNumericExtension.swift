@@ -10,7 +10,7 @@ import XCTest
 import CoreGraphics
 
 
-class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
+class TestsDoubleNumericExtension: XCTestCase,TestNumeralExtension {
 
 
   
@@ -88,7 +88,7 @@ class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
     let expected = Double(5)
     XCTAssertEqual(candidate.count, 0)
     
-    expected.sh_times { n in
+    let range = expected.sh_times { n in
       candidate.append(n)
     }
     
@@ -96,11 +96,15 @@ class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
     XCTAssertEqual(candidate[0], 1)
     XCTAssertEqual(candidate[4], 5)
     
+    XCTAssertEqual(range.startIndex, 1)
+    XCTAssertEqual(range.endIndex, 5)
+
+    
   }
 
   func testUpTo() {
     var candidate = [Int]()
-    Double(-5).sh_upto(Double(5)) { n in
+    let range = Double(-5).sh_upto(Double(5)) { n in
       candidate.append(n)
     }
     
@@ -108,18 +112,26 @@ class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
     XCTAssertEqual(candidate[0], -5)
     XCTAssertEqual(candidate[10], 5)
     
+    XCTAssertEqual(range.startIndex, -5)
+    XCTAssertEqual(range.endIndex, 5)
+
+    
     
   }
   
   func testDownTo() {
     var candidate = [Int]()
-    Double(5).sh_downto(Double(-5)) { n in
+    let range = Double(5).sh_downto(Double(-5)) { n in
       candidate.append(n)
     }
     
     XCTAssertEqual(Double(candidate.count), 11)
     XCTAssertEqual(candidate[0], 5)
     XCTAssertEqual(candidate[10], -5)
+    
+    XCTAssertEqual(range.startIndex, 5)
+    XCTAssertEqual(range.endIndex, -5)
+    
     
   }
 
