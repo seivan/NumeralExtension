@@ -10,17 +10,17 @@ import XCTest
 import CoreGraphics
 
 
-class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
+class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
 
   func testRadiansToDegrees() {
-    let candidate = 50.sh_radiansToDegrees
-    let expected:Double = 2864.78897565412
+    let candidate = 50.55.sh_radiansToDegrees
+    let expected:Double = 2896.30165438631
     XCTAssertEqualWithAccuracy(expected, candidate, 0.00000000001)
   }
   
   func testDegreesToRadians() {
-    let candidate = 2896.sh_degreesToRadians
-    let expected:Double = 50.5447351377558
+    let candidate = 2896.30165438631.sh_degreesToRadians
+    let expected:Double = 50.55
     XCTAssertEqualWithAccuracy(expected, candidate, 0.000000000001)
     
   }
@@ -28,13 +28,17 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   func testsRandomFromZero() {
 
     for index in 1...10000 {
-      var candidate = 5.sh_randomFromZero
-      XCTAssertLessThanOrEqual(candidate, 5)
-      XCTAssertGreaterThanOrEqual(candidate, 0)
+      var candidate = Double(5.5).sh_randomFromZero
+      XCTAssertFalse(candidate.isSignMinus)
+      XCTAssertLessThanOrEqual(candidate, Double(5))
+      XCTAssertGreaterThanOrEqual(candidate, Double(0))
 
-      candidate = -5.sh_randomFromZero
-      XCTAssertGreaterThanOrEqual(candidate, -5)
-      XCTAssertLessThanOrEqual(candidate, 0)
+      candidate = Double(-5.5).sh_randomFromZero
+      if(candidate < 0) {
+        XCTAssert(candidate.isSignMinus)
+      }
+      XCTAssertGreaterThanOrEqual(candidate, Double(-5))
+      XCTAssertLessThanOrEqual(candidate, Double(0))
 
     }
     
@@ -44,7 +48,7 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   func testIsEven() {
     
     for index in 1...1000 {
-      var candidate = index.sh_isEven
+      var candidate = Double(index).sh_isEven
       if(index % 2 == 0) {
         XCTAssert(candidate)
       }
@@ -57,15 +61,15 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   }
   
   func testRandom() {
-    var candidate = Int.sh_random(min: 0, max: 1)
+    var candidate = Double.sh_random(min: 0, max: 1)
     XCTAssertLessThanOrEqual(candidate,1)
     XCTAssertGreaterThanOrEqual(candidate,0)
     
-    candidate = Int.sh_random(min: -10, max: -9)
+    candidate = Double.sh_random(min: -10, max: -9)
     XCTAssertLessThanOrEqual(candidate,-9)
     XCTAssertGreaterThanOrEqual(candidate,-10)
 
-    candidate = Int.sh_random(min: 50, max: 100)
+    candidate = Double.sh_random(min: 50, max: 100)
     XCTAssertLessThanOrEqual(candidate,100)
     XCTAssertGreaterThanOrEqual(candidate,50)
 
@@ -74,16 +78,16 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   }
   
   func testClamp() {
-    var candidate = 100.sh_clamp(min: 0.0, max: 50.0)
+    var candidate = Double(100).sh_clamp(min: 0.0, max: 50.0)
     XCTAssertEqual(candidate, 50)
 
-    candidate = (-100).sh_clamp(min: 0, max: 50)
+    candidate = Double(-100).sh_clamp(min: 0, max: 50)
     XCTAssertEqual(candidate, 0)
 
-    candidate = (-100).sh_clamp(min: (-200), max: 50)
+    candidate = Double(-100).sh_clamp(min: (-200), max: 50)
     XCTAssertEqual(candidate, -100)
 
-    candidate = 75.sh_clamp(min: 50, max: 100)
+    candidate = Double(75).sh_clamp(min: 50, max: 100)
     XCTAssertEqual(candidate, 75)
     
 
@@ -92,14 +96,14 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   
   func testTimes() {
     var candidate = [Int]()
-    let expected = 5
+    let expected = Double(5)
     XCTAssertEqual(candidate.count, 0)
     
     expected.sh_times { n in
       candidate.append(n)
     }
     
-    XCTAssertEqual(candidate.count, expected)
+    XCTAssertEqual(Double(candidate.count), expected)
     XCTAssertEqual(candidate[0], 1)
     XCTAssertEqual(candidate[4], 5)
     
@@ -107,11 +111,11 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
 
   func testUpTo() {
     var candidate = [Int]()
-    (-5).sh_upto(5) { n in
+    Double(-5).sh_upto(Double(5)) { n in
       candidate.append(n)
     }
     
-    XCTAssertEqual(candidate.count, 11)
+    XCTAssertEqual(Double(candidate.count), 11)
     XCTAssertEqual(candidate[0], -5)
     XCTAssertEqual(candidate[10], 5)
     
@@ -120,11 +124,11 @@ class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
   
   func testDownTo() {
     var candidate = [Int]()
-    Double(5).sh_downto(-5) { n in
+    Double(5).sh_downto(Double(-5)) { n in
       candidate.append(n)
     }
     
-    XCTAssertEqual(candidate.count, 11)
+    XCTAssertEqual(Double(candidate.count), 11)
     XCTAssertEqual(candidate[0], 5)
     XCTAssertEqual(candidate[10], -5)
     
