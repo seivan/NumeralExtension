@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  name           = "VectorArithmetic"
+  name           = "NumeralExtension"
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
   s.name         = name
@@ -7,13 +7,9 @@ Pod::Spec.new do |s|
   source_files   = "#{name}/**/*.{swift}"
 
   s.version      = version
-  s.summary      = "Operators for Double and math properties and functions"
+  s.summary      = "Number related functions on number-structs as a protocol"
   s.description  = <<-DESC
-
-                    * Using generics to unify the three different structs
-                    * Add the protocol easily on top of your own similar structs
-                    * Namespaced generic functions to use with other structs if necessary. 
-                    * Perform operations on two different generic types CGPoint - CGVector -> CGPoint (always returns lhs)
+                    
                     * Well-tested & documented and lightweight
                     * Easy selectors to get started quickly. 
                     
