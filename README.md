@@ -70,7 +70,7 @@ protocol NumeralExtension {
 ###Contact
 
 
-If you end up using VectorArithmetic in a project, I'd love to hear about it.
+If you end up using NumeralExtension in a project, I'd love to hear about it.
 
 email: [seivan.heidari@icloud.com](mailto:seivan.heidari@icloud.com)  
 twitter: [@seivanheidari](https://twitter.com/seivanheidari)
@@ -79,8 +79,8 @@ twitter: [@seivanheidari](https://twitter.com/seivanheidari)
 
 ### License
 
-VectorArithmetic is © 2014 [Seivan](http://www.github.com/seivan) and may be freely
+NumeralExtension is © 2014 [Seivan](http://www.github.com/seivan) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/seivan/VectorArithmetic/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/seivan/NumeralExtension/blob/master/LICENSE.md) file.
 
 *** 
