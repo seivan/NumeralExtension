@@ -12,18 +12,6 @@ import CoreGraphics
 
 class TestsIntNumericExtension: XCTestCase,TestSHNumericExtension {
 
-  func testRadiansToDegrees() {
-    let candidate = 50.sh_radiansToDegrees
-    let expected:Double = 2864.78897565412
-    XCTAssertEqualWithAccuracy(expected, candidate, 0.00000000001)
-  }
-  
-  func testDegreesToRadians() {
-    let candidate = 2896.sh_degreesToRadians
-    let expected:Double = 50.5447351377558
-    XCTAssertEqualWithAccuracy(expected, candidate, 0.000000000001)
-    
-  }
   
   func testsRandomFromZero() {
 

@@ -1,7 +1,8 @@
-## VectorArithmetic
+## NumericExtension
 
 ### Overview
 Extending  ```Double```  and ```Int``` with the protocol ```NumericExtension```
+Adding random, clamping and numerical list comprehension.
 
 
 >To get better interoperability between 32 and 64-bit numerical types use 

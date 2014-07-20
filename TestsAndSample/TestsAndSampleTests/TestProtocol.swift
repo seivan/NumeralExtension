@@ -10,8 +10,6 @@ import XCTest
 
 
 protocol TestSHNumericExtension {
-  func testRadiansToDegrees()
-  func testDegreesToRadians()
   func testsRandomFromZero()
   func testIsEven()
   func testRandom()

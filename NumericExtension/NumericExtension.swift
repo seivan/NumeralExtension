@@ -3,22 +3,18 @@ import Foundation
 typealias IndexHandler = (number:Int) -> Void
 
 protocol NumericExtension {
-  var sh_radiansToDegrees:Double { get }
-  var sh_degreesToRadians:Double { get }
   var sh_randomFromZero:Self { get }
   var sh_isEven:Bool { get }
   class func sh_random(#min:Int, max:Int) -> Self
   func sh_clamp(#min:Self, max:Self) -> Self
-  func sh_times(block:IndexHandler)
-  func sh_upto(toValue:Self, _ block:IndexHandler)
-  func sh_downto(toValue:Self, _ block:IndexHandler)
+  func sh_times(block:IndexHandler) -> Range<Int>
+  func sh_upto(toValue:Self, _ block:IndexHandler) -> Range<Int>
+  func sh_downto(toValue:Self, _ block:IndexHandler) -> Range<Int>
 }
 
 
 extension Swift.Double: NumericExtension {
   
-  var sh_radiansToDegrees:Double { return self * 180 / M_PI }
-  var sh_degreesToRadians:Double { return self * M_PI / 180 }
   var sh_isEven:Bool {  return (self % 2 == 0) }
   var sh_randomFromZero:Double {
   let isMinus = self.isSignMinus
@@ -42,25 +38,28 @@ extension Swift.Double: NumericExtension {
     return properValue
   }
   
-  func sh_times(block:IndexHandler) {
+  func sh_times(block:IndexHandler) -> Range<Int> {
     assert(self > 0, "Self to be more than 0")
     for var index = 1; index <= Int(self); index += 1 {
       block(number: index)
     }
+    return Range(start: 1, end: Int(self))
   }
   
-  func sh_upto(toValue:Double, _ block:IndexHandler) {
+  func sh_upto(toValue:Double, _ block:IndexHandler) -> Range<Int> {
     assert(self < toValue, "Starting value has to be less than the to-value")
     for var index = Int(self); index <= Int(toValue); index += 1 {
       block(number: index)
     }
+    return Range(start:Int(self), end:Int(toValue))
   }
   
-  func sh_downto(toValue:Double, _ block:IndexHandler) {
+  func sh_downto(toValue:Double, _ block:IndexHandler) -> Range<Int> {
     assert(self > toValue, "Starting value has to be more than the to-value")
     for var index = Int(self); index >= Int(toValue); index -= 1 {
       block(number: index)
     }
+    return Range(start: Int(self), end: Int(toValue))
   }
   
   
@@ -69,8 +68,6 @@ extension Swift.Double: NumericExtension {
 
 extension Swift.Int: NumericExtension {
   
-  var sh_radiansToDegrees:Double { return Double(self) * 180 / M_PI }
-  var sh_degreesToRadians:Double { return Double(self) * M_PI / 180 }
   var sh_isEven:Bool {  return (self % 2 == 0) }
   var sh_randomFromZero:Int {
   let maxValue = self < 0 ? 0 : self
@@ -91,25 +88,29 @@ extension Swift.Int: NumericExtension {
     return properValue
   }
   
-  func sh_times(block:IndexHandler) {
+  func sh_times(block:IndexHandler) -> Range<Int> {
     assert(self > 0, "Self to be more than 0")
+    
     for var index = 1; index <= self; index += 1 {
       block(number: index)
     }
+    return Range(start: 1, end: self)
   }
   
-  func sh_upto(toValue:Int, _ block:IndexHandler) {
+  func sh_upto(toValue:Int, _ block:IndexHandler) -> Range<Int> {
     assert(self < toValue, "Starting value has to be less than the to-value")
     for var index = self; index <= toValue; index += 1 {
       block(number: Int(index))
     }
+    return Range(start: self, end: toValue)
   }
   
-  func sh_downto(toValue:Int, _ block:IndexHandler) {
+  func sh_downto(toValue:Int, _ block:IndexHandler) -> Range<Int> {
     assert(self > toValue, "Starting value has to be more than the to-value")
     for var index = self; index >= toValue; index -= 1 {
       block(number: Int(index))
     }
+    return Range(start: self, end: toValue)
   }
   
 }
