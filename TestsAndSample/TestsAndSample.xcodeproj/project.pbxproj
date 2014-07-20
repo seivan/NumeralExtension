@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		223B4FFF1969AE1700318C89 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B4FFE1969AE1700318C89 /* TestProtocol.swift */; };
 		223B50051969FCBB00318C89 /* TestsDoubleNumericExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B50041969FCBB00318C89 /* TestsDoubleNumericExtension.swift */; };
-		227C5BE8197BB1C600255DEC /* NumericExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C5BE7197BB1C600255DEC /* NumericExtension.swift */; };
-		227C5BE9197BB1C600255DEC /* NumericExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C5BE7197BB1C600255DEC /* NumericExtension.swift */; };
 		22AFC47F195F9D02003572F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AFC47E195F9D02003572F3 /* AppDelegate.swift */; };
 		22AFC481195F9D02003572F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AFC480195F9D02003572F3 /* Images.xcassets */; };
+		22B98CBF197BF070003C04F8 /* NumeralExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B98CBE197BF070003C04F8 /* NumeralExtension.swift */; };
+		22B98CC0197BF070003C04F8 /* NumeralExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B98CBE197BF070003C04F8 /* NumeralExtension.swift */; };
 		22BD0CB8197BD54100E61F7D /* TestsIntNumericExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD0CB7197BD54100E61F7D /* TestsIntNumericExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,13 +49,13 @@
 /* Begin PBXFileReference section */
 		223B4FFE1969AE1700318C89 /* TestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 		223B50041969FCBB00318C89 /* TestsDoubleNumericExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsDoubleNumericExtension.swift; sourceTree = "<group>"; };
-		227C5BE7197BB1C600255DEC /* NumericExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericExtension.swift; sourceTree = "<group>"; };
 		22AFC479195F9D02003572F3 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AFC47D195F9D02003572F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22AFC47E195F9D02003572F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22AFC480195F9D02003572F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22AFC486195F9D02003572F3 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AFC48B195F9D02003572F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B98CBE197BF070003C04F8 /* NumeralExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumeralExtension.swift; sourceTree = "<group>"; };
 		22BD0CB7197BD54100E61F7D /* TestsIntNumericExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsIntNumericExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,19 +77,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		227C5BE6197BB1C600255DEC /* NumericExtension */ = {
-			isa = PBXGroup;
-			children = (
-				227C5BE7197BB1C600255DEC /* NumericExtension.swift */,
-			);
-			name = NumericExtension;
-			path = ../NumericExtension;
-			sourceTree = "<group>";
-		};
 		22AFC470195F9D02003572F3 = {
 			isa = PBXGroup;
 			children = (
-				227C5BE6197BB1C600255DEC /* NumericExtension */,
+				22B98CBD197BF070003C04F8 /* NumeralExtension */,
 				22AFC47B195F9D02003572F3 /* TestsAndSample */,
 				22AFC489195F9D02003572F3 /* TestsAndSampleTests */,
 				22AFC47A195F9D02003572F3 /* Products */,
@@ -140,6 +131,15 @@
 				22AFC48B195F9D02003572F3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22B98CBD197BF070003C04F8 /* NumeralExtension */ = {
+			isa = PBXGroup;
+			children = (
+				22B98CBE197BF070003C04F8 /* NumeralExtension.swift */,
+			);
+			name = NumeralExtension;
+			path = ../NumeralExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +241,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B98CBF197BF070003C04F8 /* NumeralExtension.swift in Sources */,
 				22AFC47F195F9D02003572F3 /* AppDelegate.swift in Sources */,
-				227C5BE8197BB1C600255DEC /* NumericExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				223B4FFF1969AE1700318C89 /* TestProtocol.swift in Sources */,
-				227C5BE9197BB1C600255DEC /* NumericExtension.swift in Sources */,
 				223B50051969FCBB00318C89 /* TestsDoubleNumericExtension.swift in Sources */,
+				22B98CC0197BF070003C04F8 /* NumeralExtension.swift in Sources */,
 				22BD0CB8197BD54100E61F7D /* TestsIntNumericExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
