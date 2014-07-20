@@ -24,25 +24,27 @@ class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
     XCTAssertEqualWithAccuracy(expected, candidate, 0.000000000001)
     
   }
+  
   func testsRandomFromZero() {
 
     for index in 1...10000 {
-      var candidate = Double(5).sh_randomFromZero
+      var candidate = Double(5.5).sh_randomFromZero
       XCTAssertFalse(candidate.isSignMinus)
-      XCTAssertLessThanOrEqual(candidate, 5)
-    }
-    
-    for index in 1...1000 {
-      var candidate = Double(-5).sh_randomFromZero
+      XCTAssertLessThanOrEqual(candidate, Double(5))
+      XCTAssertGreaterThanOrEqual(candidate, Double(0))
+
+      candidate = Double(-5.5).sh_randomFromZero
       if(candidate < 0) {
         XCTAssert(candidate.isSignMinus)
       }
-      XCTAssertGreaterThanOrEqual(candidate, -5)
+      XCTAssertGreaterThanOrEqual(candidate, Double(-5))
+      XCTAssertLessThanOrEqual(candidate, Double(0))
+
     }
-
-
     
+  
   }
+  
   func testIsEven() {
     
     for index in 1...1000 {
@@ -55,68 +57,80 @@ class TestsDoubleNumericExtension: XCTestCase,TestSHNumericExtension {
       }
       
     }
-    
-    
+
   }
+  
   func testRandom() {
     var candidate = Double.sh_random(min: 0, max: 1)
     XCTAssertLessThanOrEqual(candidate,1)
-    candidate = Double.sh_random(min: 0, max: 1)
-    XCTAssert(candidate <= 1 || candidate >= 0)
+    XCTAssertGreaterThanOrEqual(candidate,0)
+    
     candidate = Double.sh_random(min: -10, max: -9)
-    XCTAssert(candidate >= -10 && candidate <= -9)
+    XCTAssertLessThanOrEqual(candidate,-9)
+    XCTAssertGreaterThanOrEqual(candidate,-10)
+
+    candidate = Double.sh_random(min: 50, max: 100)
+    XCTAssertLessThanOrEqual(candidate,100)
+    XCTAssertGreaterThanOrEqual(candidate,50)
+
 
     
   }
+  
   func testClamp() {
-    var candidate = 100.sh_clamp(min: 0, max: 50)
+    var candidate = Double(100).sh_clamp(min: 0.0, max: 50.0)
     XCTAssertEqual(candidate, 50)
 
-    candidate = (-100).sh_clamp(min: 0, max: 50)
+    candidate = Double(-100).sh_clamp(min: 0, max: 50)
     XCTAssertEqual(candidate, 0)
 
-    candidate = (-100).sh_clamp(min: (-200), max: 50)
+    candidate = Double(-100).sh_clamp(min: (-200), max: 50)
     XCTAssertEqual(candidate, -100)
 
-    candidate = 75.sh_clamp(min: 50, max: 100)
+    candidate = Double(75).sh_clamp(min: 50, max: 100)
     XCTAssertEqual(candidate, 75)
     
 
     
   }
+  
   func testTimes() {
     var candidate = [Int]()
     let expected = Double(5)
     XCTAssertEqual(candidate.count, 0)
     
-    expected.sh_times {
-      candidate.append(1)
+    expected.sh_times { n in
+      candidate.append(n)
     }
     
     XCTAssertEqual(Double(candidate.count), expected)
-    
+    XCTAssertEqual(candidate[0], 1)
+    XCTAssertEqual(candidate[4], 5)
     
   }
-  func testTimesWithIndex() {
-    var candidate = [Int]()
-    let expected = 10
-    XCTAssertEqual(candidate.count, 0)
-    
 
-    expected.sh_times() { (index:Int) in
-      candidate.append(index)
+  func testUpTo() {
+    var candidate = [Int]()
+    Double(-5).sh_upto(Double(5)) { n in
+      candidate.append(n)
     }
     
-    XCTAssertEqual(candidate.count, expected)
-    XCTAssertEqual(candidate[0], 1)
-    XCTAssertEqual(candidate[9], 10)
-
+    XCTAssertEqual(Double(candidate.count), 11)
+    XCTAssertEqual(candidate[0], -5)
+    XCTAssertEqual(candidate[10], 5)
+    
     
   }
-  func testUpTo() {
-    
-  }
+  
   func testDownTo() {
+    var candidate = [Int]()
+    Double(5).sh_downto(Double(-5)) { n in
+      candidate.append(n)
+    }
+    
+    XCTAssertEqual(Double(candidate.count), 11)
+    XCTAssertEqual(candidate[0], 5)
+    XCTAssertEqual(candidate[10], -5)
     
   }
 

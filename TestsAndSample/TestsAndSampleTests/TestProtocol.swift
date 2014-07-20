@@ -17,7 +17,6 @@ protocol TestSHNumericExtension {
   func testRandom()
   func testClamp()
   func testTimes()
-  func testTimesWithIndex()
   func testUpTo()
   func testDownTo()
 }
