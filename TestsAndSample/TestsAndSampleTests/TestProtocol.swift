@@ -13,6 +13,7 @@ protocol TestNumeralExtension {
   func testsRandomFromZero()
   func testIsEven()
   func testRandom()
+  func testRandomBetween()
   func testClamp()
   func testTimes()
   func testUpTo()
