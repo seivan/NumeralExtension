@@ -21,6 +21,9 @@ Adding random, clamping and numerical list comprehension.
 Double.sh_random(min: -10, max: 100) // 44
 Int.sh_random(min: -100, max: 100) // -99
 
+(-10).sh_randomBetween(100) // 9
+(100).sh_randomBetween(-200) // -67
+
 
 (-230).sh_clamp(min: 0, max: 100) // 0
 230.sh_clamp(min: 0, max: 100) // 100
