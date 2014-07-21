@@ -6,6 +6,7 @@ protocol NumeralExtension {
   var sh_randomFromZero:Self { get }
   var sh_isEven:Bool { get }
   class func sh_random(#min:Int, max:Int) -> Self
+  func sh_randomBetween(toValue:Self) -> Self
   func sh_clamp(#min:Self, max:Self) -> Self
   func sh_times(block:IndexHandler) -> Range<Int>
   func sh_upto(toValue:Self, _ block:IndexHandler) -> Range<Int>
@@ -28,7 +29,11 @@ extension Swift.Double: NumeralExtension {
     return Double(min + Int(arc4random()) % (max - min + 1));
   }
   
-  
+  func sh_randomBetween(toValue:Double) -> Double {
+    let minValue = toValue < self ? toValue : self
+    let maxValue = toValue > self ? toValue : self
+    return Double.sh_random(min:Int(minValue), max:Int(maxValue))
+  }
   
   func sh_clamp(#min:Double,max:Double) -> Double {
     assert(min < max, "Minimum  has to be less than the maximum")
@@ -79,6 +84,13 @@ extension Swift.Int: NumeralExtension {
     assert(min < max, "Minimum has to be less than the maximum")
     return min + Int(arc4random()) % (max - min + 1);
   }
+  
+  func sh_randomBetween(toValue:Int) -> Int {
+    let minValue = toValue < self ? toValue : self
+    let maxValue = toValue > self ? toValue : self
+    return Int.sh_random(min:minValue, max:maxValue)
+  }
+
   
   func sh_clamp(#min:Int,max:Int) -> Int {
     assert(min < max, "Minimum  has to be less than the maximum")
