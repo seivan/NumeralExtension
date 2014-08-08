@@ -1,8 +1,8 @@
 ## NumeralExtension
 
 ### Overview
-Extending  ```Double```  and ```Int``` with the protocol ```NumericExtension```
-Adding random, clamping and numerical list comprehension.
+Extending  ``Int``` with ```NumericExtension``` protocol 
+Adding random, clamping and etc.
 
 
 >To get better interoperability between 32 and 64-bit numerical types use 
