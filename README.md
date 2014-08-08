@@ -1,50 +1,46 @@
 ## NumeralExtension
 
 ### Overview
-Extending  ```Double```  and ```Int``` with the protocol ```NumericExtension```
-Adding random, clamping and numerical list comprehension.
-
-
->To get better interoperability between 32 and 64-bit numerical types use 
-* [ScalarArithmetic](https://github.com/seivan/ScalarArithmetic)
+Extending  ``Int``` with ```NumericExtension``` protocol 
+Adding random, clamping and etc.
 
 ### Usage
 
 ```swift
 
-100.sh_randomFromZero // 52
--25.sh_randomFromZero // -18
+100.randomFromZero // 52
+-25.randomFromZero // -18
 
-200.sh_isEven // true
-199.sh_isEven // false
+200.isEven // true
+199.isEven // false
 
-Double.sh_random(min: -10, max: 100) // 44
-Int.sh_random(min: -100, max: 100) // -99
+Double.random(min: -10, max: 100) // 44
+Int.random(min: -100, max: 100) // -99
 
-(-10).sh_randomBetween(100) // 9
-(100).sh_randomBetween(-200) // -67
+(-10).randomBetween(100) // 9
+100.randomBetween(-200) // -67
 
 
-(-230).sh_clamp(min: 0, max: 100) // 0
-230.sh_clamp(min: 0, max: 100) // 100
-10.sh_clamp(min: 50, max: 100) // 50
+(-230).clamp(min: 0, max: 100) // 0
+230.clamp(min: 0, max: 100) // 100
+10.clamp(min: 50, max: 100) // 50
 
 //prints 1 to 20
-var range = 20.sh_times() { n in
+var range = 20.times() { n in
   println(n)
 }
 //range.startIndex == 1
 //range.endIndex == 20
 
 //prints -10 to 5
-range = (-10).sh_upto(5) { n in
+range = (-10).upto(5) { n in
   println(n)
 }
 //range.startIndex == -10
 //range.endIndex == 5
 
 //prints 10 to -25
-range = 10.sh_downto(-25) { n in
+range = 10.downto(-25) { n in
   println(n)
 }
 //range.startIndex == 10
@@ -58,13 +54,13 @@ range = 10.sh_downto(-25) { n in
 typealias IndexHandler = (number:Int) -> Void
 
 protocol NumeralExtension {
-  var sh_randomFromZero:Self { get }
-  var sh_isEven:Bool { get }
-  class func sh_random(#min:Int, max:Int) -> Self
-  func sh_clamp(#min:Self, max:Self) -> Self
-  func sh_times(block:IndexHandler) -> Range<Int>
-  func sh_upto(toValue:Self, _ block:IndexHandler) -> Range<Int>
-  func sh_downto(toValue:Self, _ block:IndexHandler) -> Range<Int>
+  var randomFromZero:Self { get }
+  var isEven:Bool { get }
+  class func random(#min:Int, max:Int) -> Self
+  func clamp(#min:Self, max:Self) -> Self
+  func times(block:IndexHandler) -> Range<Int>
+  func upto(toValue:Self, _ block:IndexHandler) -> Range<Int>
+  func downto(toValue:Self, _ block:IndexHandler) -> Range<Int>
 }
 
 ```

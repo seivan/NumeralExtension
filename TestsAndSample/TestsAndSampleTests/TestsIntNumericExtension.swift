@@ -16,11 +16,11 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   func testsRandomFromZero() {
 
     for index in 1...10000 {
-      var candidate = 5.sh_randomFromZero
+      var candidate = 5.randomFromZero
       XCTAssertLessThanOrEqual(candidate, 5)
       XCTAssertGreaterThanOrEqual(candidate, 0)
 
-      candidate = -5.sh_randomFromZero
+      candidate = -5.randomFromZero
       XCTAssertGreaterThanOrEqual(candidate, -5)
       XCTAssertLessThanOrEqual(candidate, 0)
 
@@ -32,7 +32,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   func testIsEven() {
     
     for index in 1...1000 {
-      var candidate = index.sh_isEven
+      var candidate = index.isEven
       if(index % 2 == 0) {
         XCTAssert(candidate)
       }
@@ -45,15 +45,15 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   }
   
   func testRandom() {
-    var candidate = Int.sh_random(min: 0, max: 1)
+    var candidate = Int.random(min: 0, max: 1)
     XCTAssertLessThanOrEqual(candidate,1)
     XCTAssertGreaterThanOrEqual(candidate,0)
     
-    candidate = Int.sh_random(min: -10, max: -9)
+    candidate = Int.random(min: -10, max: -9)
     XCTAssertLessThanOrEqual(candidate,-9)
     XCTAssertGreaterThanOrEqual(candidate,-10)
 
-    candidate = Int.sh_random(min: 50, max: 100)
+    candidate = Int.random(min: 50, max: 100)
     XCTAssertLessThanOrEqual(candidate,100)
     XCTAssertGreaterThanOrEqual(candidate,50)
 
@@ -62,15 +62,15 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   }
   
   func testRandomBetween() {
-    var candidate = 0.sh_randomBetween(1)
+    var candidate = 0.randomBetween(1)
     XCTAssertLessThanOrEqual(candidate,1)
     XCTAssertGreaterThanOrEqual(candidate,0)
     
-    candidate = Int.sh_random(min: -10, max: -9)
+    candidate = Int.random(min: -10, max: -9)
     XCTAssertLessThanOrEqual(candidate,-9)
     XCTAssertGreaterThanOrEqual(candidate,-10)
     
-    candidate = Int.sh_random(min: 50, max: 100)
+    candidate = Int.random(min: 50, max: 100)
     XCTAssertLessThanOrEqual(candidate,100)
     XCTAssertGreaterThanOrEqual(candidate,50)
     
@@ -79,16 +79,16 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   }
   
   func testClamp() {
-    var candidate = 100.sh_clamp(min: 0.0, max: 50.0)
+    var candidate = 100.clamp(min: 0.0, max: 50.0)
     XCTAssertEqual(candidate, 50)
 
-    candidate = (-100).sh_clamp(min: 0, max: 50)
+    candidate = (-100).clamp(min: 0, max: 50)
     XCTAssertEqual(candidate, 0)
 
-    candidate = (-100).sh_clamp(min: (-200), max: 50)
+    candidate = (-100).clamp(min: (-200), max: 50)
     XCTAssertEqual(candidate, -100)
 
-    candidate = 75.sh_clamp(min: 50, max: 100)
+    candidate = 75.clamp(min: 50, max: 100)
     XCTAssertEqual(candidate, 75)
     
 
@@ -100,7 +100,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
     let expected = 5
     XCTAssertEqual(candidate.count, 0)
     
-    let range = expected.sh_times { n in
+    let range = expected.times { n in
       candidate.append(n)
     }
     
@@ -116,7 +116,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
 
   func testUpTo() {
     var candidate = [Int]()
-    let range = Double(-5).sh_upto(5) { n in
+    let range = (-5).upto(5) { n in
       candidate.append(n)
     }
     
@@ -133,7 +133,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   
   func testDownTo() {
     var candidate = [Int]()
-    let range = Double(5).sh_downto(-5) { n in
+    let range = 5.downto(-5) { n in
       candidate.append(n)
     }
     

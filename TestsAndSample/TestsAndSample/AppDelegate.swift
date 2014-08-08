@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window!.backgroundColor = UIColor.whiteColor()
     self.window!.makeKeyAndVisible()
     
-      let x = 0.sh_randomBetween(1)
+      let x = 0.randomBetween(1)
     println(x)
 
     
