@@ -116,7 +116,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
 
   func testUpTo() {
     var candidate = [Int]()
-    let range = Double(-5).sh_upto(5) { n in
+    let range = (-5).sh_upto(5) { n in
       candidate.append(n)
     }
     
@@ -133,7 +133,7 @@ class TestsIntNumericExtension: XCTestCase,TestNumeralExtension {
   
   func testDownTo() {
     var candidate = [Int]()
-    let range = Double(5).sh_downto(-5) { n in
+    let range = 5.sh_downto(-5) { n in
       candidate.append(n)
     }
     
